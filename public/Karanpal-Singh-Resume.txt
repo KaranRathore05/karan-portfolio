@@ -1,0 +1,54 @@
+KARANPAL SINGH
+Pilani, Rajasthan, India
++91-9649013600
+karan0797s@gmail.com
+https://www.linkedin.com/in/karan-rathore-9a448a302/
+https://github.com/KaranRathore05
+
+ROLE
+B.Tech Computer Engineering Student | Full-Stack Developer | ML Enthusiast
+
+SUMMARY
+Building scalable web applications, Web3 products, and practical machine learning solutions.
+
+EDUCATION
+- B K Birla Institute of Engineering and Technology, Pilani
+  B.Tech in Computer Engineering | 2022 - 2026
+- Rajasthan Board of Secondary Education
+  Class XII (Senior Secondary) - 90% | 2023
+- Rajasthan Board of Secondary Education
+  Class X (Secondary) - 87% | 2021
+
+SKILLS
+- Languages: Java, JavaScript, Python, C, C++
+- Frameworks and Technologies: MERN Stack, Next.js, React.js, Node.js, Express.js, MongoDB, Tailwind CSS
+- Machine Learning and AI: Machine Learning Algorithms, Data Analysis, AI Foundations, NumPy, Matplotlib, Scikit-learn
+- Core Subjects: Data Structures and Algorithms, Operating Systems, Computer Networks, OOP, DBMS
+
+PROJECTS
+- Fundify Campus
+  Decentralized Student Crowdfunding Platform
+  MERN, Algorand, node-cron
+- Send Me a Chai
+  Creator-Centric Crowdfunding Platform
+  Next.js, Tailwind CSS, Razorpay, GitHub OAuth
+- CardioPredict
+  Heart Attack Risk Level Prediction
+  Python, Random Forest, Scikit-learn
+
+EXPERIENCE
+- IIT Bombay - Spoken Tutorial Project
+  C Programming Trainee | Remote | 2024
+- Muskurahat Foundation
+  Crowdfunding Intern | Mumbai (Remote) | Jan 2025
+
+CERTIFICATIONS
+- C Training - IIT Bombay (Spoken Tutorial)
+- DSA in Java - Apna College
+- Java Internship - CodSoft
+- HackwithUttarpradesh Certificate
+
+ACHIEVEMENTS
+- ACE Hack 5.0 Winner
+- Solved 200+ DSA Problems
+- Active GitHub Contributor with 300+ contributions

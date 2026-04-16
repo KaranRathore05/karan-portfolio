@@ -4,23 +4,16 @@ import sliceAnnotation from '~/assets/slice-annotation.png';
 import sliceAppLarge from '~/assets/slice-app-large.jpg';
 import sliceAppPlaceholder from '~/assets/slice-app-placeholder.jpg';
 import sliceApp from '~/assets/slice-app.jpg';
-import sliceBackgroundBarLarge from '~/assets/slice-background-bar-large.jpg';
-import sliceBackgroundBarPlaceholder from '~/assets/slice-background-bar-placeholder.jpg';
-import sliceBackgroundBar from '~/assets/slice-background-bar.jpg';
 import sliceBackgroundLarge from '~/assets/slice-background-large.jpg';
 import sliceBackgroundPlaceholder from '~/assets/slice-background-placeholder.jpg';
 import sliceBackground from '~/assets/slice-background.jpg';
-import sliceIrlPlaceholder from '~/assets/slice-irl-placeholder.jpg';
-import sliceIrl from '~/assets/slice-irl.jpg';
-import sliceSidebarAnnotationsLarge from '~/assets/slice-sidebar-annotations-large.png';
-import sliceSidebarAnnotationsPlaceholder from '~/assets/slice-sidebar-annotations-placeholder.png';
-import sliceSidebarAnnotations from '~/assets/slice-sidebar-annotations.png';
-import sliceSidebarLayersLarge from '~/assets/slice-sidebar-layers-large.png';
-import sliceSidebarLayersPlaceholder from '~/assets/slice-sidebar-layers-placeholder.png';
-import sliceSidebarLayers from '~/assets/slice-sidebar-layers.png';
 import sliceSlidesLarge from '~/assets/slice-slides-large.jpg';
 import sliceSlidesPlaceholder from '~/assets/slice-slides-placeholder.jpg';
 import sliceSlides from '~/assets/slice-slides.jpg';
+import sendMeChaiQ1 from '~/assets/sendmechai-q1.png';
+import sendMeChaiQ2 from '~/assets/sendmechai-q2.png';
+import sendMeChaiQ3 from '~/assets/sendmechai-q3.png';
+import { Button } from '~/components/button';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';
 import {
@@ -29,21 +22,21 @@ import {
   ProjectHeader,
   ProjectImage,
   ProjectSection,
-  ProjectSectionColumns,
   ProjectSectionContent,
   ProjectSectionHeading,
   ProjectSectionText,
-  ProjectTextRow,
+  ProjectTextRow
 } from '~/layouts/project';
 import { Fragment } from 'react';
 import { media } from '~/utils/style';
 import { baseMeta } from '~/utils/meta';
-import styles from './slice.module.css';
+import config from '~/config.json';
 
-const title = 'Biomedical image collaboration';
+const title = 'Send Me a Chai';
 const description =
-  'This project involved designing a better way for biomedical educators and learners to annotate digital slides together.';
-const roles = ['User Research', 'UX Design', 'Interface Design'];
+  'A creator-centric crowdfunding platform built for smoother supporter interactions and online contributions.';
+const roles = ['Next.js', 'Tailwind CSS', 'Razorpay', 'GitHub OAuth'];
+const project = config.projects.find(entry => entry.slug === 'slice');
 
 export const meta = () => {
   return baseMeta({ title, description, prefix: 'Projects' });
@@ -52,7 +45,7 @@ export const meta = () => {
 export const Slice = () => {
   return (
     <Fragment>
-      <ProjectContainer className={styles.slice}>
+      <ProjectContainer>
         <ProjectBackground
           src={sliceBackground}
           srcSet={`${sliceBackground} 1280w, ${sliceBackgroundLarge} 2560w`}
@@ -64,137 +57,76 @@ export const Slice = () => {
         <ProjectHeader
           title={title}
           description={description}
-          url="https://www.best.edu.au/s/q2yjjvl7?data=8%404!9%4020303!10%40-15087&version=1"
+          url={project?.githubUrl}
+          linkLabel="View on GitHub"
           roles={roles}
         />
         <ProjectSection padding="top">
           <ProjectSectionContent>
             <ProjectImage
-              srcSet={`${sliceApp} 800w, ${sliceAppLarge} 1920w`}
+              srcSet={`${sendMeChaiQ1} 800w, ${sendMeChaiQ1} 1920w`}
               width={800}
               height={500}
-              placeholder={sliceAppPlaceholder}
-              alt="The Slice web application showing a selected user annotation."
+              placeholder={sendMeChaiQ1}
+              alt="Send Me a Chai project preview."
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 90vw, 80vw`}
             />
           </ProjectSectionContent>
         </ProjectSection>
         <ProjectSection>
-          <ProjectSectionColumns centered className={styles.columns}>
-            <div className={styles.imagesText}>
-              <ProjectSectionHeading>Bringing it together</ProjectSectionHeading>
-              <ProjectSectionText>
-                Teachers needed a better way to create collaborative group activities by
-                annotating slides on Slice. Before starting this project, a layer could
-                only be annotated by a single user, making it difficult for learners to
-                work together.
-              </ProjectSectionText>
-              <ProjectSectionText>
-                Our solution was to allow users to be invited to a layer, where they can
-                see others’ annotations and make their own.
-              </ProjectSectionText>
-            </div>
-            <div className={styles.sidebarImages}>
-              <Image
-                className={styles.sidebarImage}
-                srcSet={`${sliceSidebarLayers} 350w, ${sliceSidebarLayersLarge} 700w`}
-                width={350}
-                height={750}
-                placeholder={sliceSidebarLayersPlaceholder}
-                alt="The layers sidebar design, now with user profiles."
-                sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
-              />
-              <Image
-                className={styles.sidebarImage}
-                srcSet={`${sliceSidebarAnnotations} 350w, ${sliceSidebarAnnotationsLarge} 700w`}
-                width={350}
-                height={750}
-                placeholder={sliceSidebarAnnotationsPlaceholder}
-                alt="Multiple user annotations on a shared layer."
-                sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
-              />
-            </div>
-          </ProjectSectionColumns>
+          <ProjectTextRow>
+            <ProjectSectionHeading>Overview</ProjectSectionHeading>
+            <ProjectSectionText>
+              Send Me a Chai is a crowdfunding platform designed around creators and
+              supporters. The focus was on making contributions feel smooth while also
+              giving creators better account control, messaging, and visibility into
+              supporter activity.
+            </ProjectSectionText>
+          </ProjectTextRow>
         </ProjectSection>
         <ProjectSection light>
           <ProjectSectionContent>
-            <ProjectTextRow>
-              <ProjectSectionHeading>Improving the experience</ProjectSectionHeading>
-              <ProjectSectionText>
-                A problem we heard about often form users was that it was difficult to
-                find images they had previously seen or worked on. To solve this we added
-                a new tab that lists all previously annotated slides. In addition, we
-                added the ability to favorite slides, so if users find an interesting
-                slide they want to annotate later, they can easily save it to their
-                account.
-              </ProjectSectionText>
-            </ProjectTextRow>
             <Image
-              srcSet={`${sliceSlides} 800w, ${sliceSlidesLarge} 1920w`}
+              srcSet={`${sendMeChaiQ2} 800w, ${sendMeChaiQ2} 1920w`}
               width={800}
               height={500}
-              placeholder={sliceSlidesPlaceholder}
-              alt="The new My Slides tab in slice, showing annotated and favorited slides."
+              placeholder={sendMeChaiQ2}
+              alt="Send Me a Chai feature overview."
               sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
             />
-          </ProjectSectionContent>
-        </ProjectSection>
-        <ProjectSection padding="top">
-          <ProjectSectionContent className={styles.grid}>
-            <div className={styles.gridImage}>
-              <div className={styles.gridBackground}>
-                <Image
-                  srcSet={`${sliceBackgroundBar} 440w, ${sliceBackgroundBarLarge} 880w`}
-                  width={440}
-                  height={790}
-                  placeholder={sliceBackgroundBarPlaceholder}
-                  alt=""
-                  role="presentation"
-                  sizes={`(max-width: ${media.mobile}px) 312px, (max-width: ${media.tablet}px) 408px, 514px`}
-                />
-              </div>
-              <div className={styles.gridForeground}>
-                <Image
-                  srcSet={`${sliceAnnotation} 440w, ${sliceAnnotationLarge} 880w`}
-                  width={440}
-                  height={340}
-                  placeholder={sliceAnnotationPlaceholder}
-                  alt="An annotation preview popover with statistics for shape perimeter and area."
-                  sizes={`(max-width: ${media.mobile}px) 584px, (max-width: ${media.tablet}px) 747px, 556px`}
-                />
-              </div>
-            </div>
-            <div className={styles.gridText}>
-              <ProjectSectionHeading>Meaningful details</ProjectSectionHeading>
+            <ProjectTextRow>
+              <ProjectSectionHeading>Key highlights</ProjectSectionHeading>
               <ProjectSectionText>
-                Marking and annotating areas on high resolution biomedical images is the
-                core experience of the app, and it was easy to get lost or lose sense of
-                scale when zooming in on details. Adding measurements for the perimeter
-                and area of an annotation both helped to communicate the overall scale of
-                the image and how large the annotated feature is in comparison.
+                The platform integrates GitHub OAuth login, Razorpay payments, dashboard
+                views, real-time notifications, secure profiles, and personalized
+                supporter messaging. These features improve both trust and usability for
+                online contributions.
               </ProjectSectionText>
-            </div>
+            </ProjectTextRow>
           </ProjectSectionContent>
         </ProjectSection>
         <ProjectSection>
           <ProjectSectionContent>
+            <Image
+              srcSet={`${sendMeChaiQ3} 440w, ${sendMeChaiQ3} 880w`}
+              width={440}
+              height={340}
+              placeholder={sendMeChaiQ3}
+              alt="Payment and supporter interaction details for Send Me a Chai."
+              sizes={`(max-width: ${media.mobile}px) 584px, (max-width: ${media.tablet}px) 747px, 556px`}
+            />
             <ProjectTextRow>
-              <ProjectSectionHeading>Project outcomes</ProjectSectionHeading>
+              <ProjectSectionHeading>Why it matters</ProjectSectionHeading>
               <ProjectSectionText>
-                Real-time collaborative annotation facilitated better collaboration
-                between learners, and was much easier to run group exercises with the new
-                shared layers feature. Learners gave feedback that is was enjoyable to
-                work together and see what others were doing, and liked how interactive
-                and easy to use the application was.
+                This project shows my ability to build polished product flows on top of
+                modern frontend tooling and payment integrations. It also reflects a
+                strong interest in developer-focused products and user-friendly
+                experiences.
               </ProjectSectionText>
             </ProjectTextRow>
-            <Image
-              src={sliceIrl}
-              width={940}
-              height={500}
-              placeholder={sliceIrlPlaceholder}
-              alt="Students at the University of New South Wales using the new collaborative annotation features"
-            />
+                <Button secondary href={project?.liveUrl} icon="link" target="_blank" rel="noreferrer">
+              Live link
+            </Button>
           </ProjectSectionContent>
         </ProjectSection>
       </ProjectContainer>

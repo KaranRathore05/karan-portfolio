@@ -21,7 +21,7 @@ export const Navbar = () => {
   const location = useLocation();
   const windowSize = useWindowSize();
   const headerRef = useRef();
-  const isMobile = windowSize.width <= media.mobile || windowSize.height <= 696;
+  const isMobile = windowSize.width <= 820;
   const scrollToHash = useScrollToHash();
 
   useEffect(() => {
@@ -114,6 +114,10 @@ export const Navbar = () => {
 
   // Check if a nav item should be active
   const getCurrent = (url = '') => {
+    if (url.includes('#')) {
+      return '';
+    }
+
     const nonTrailing = current?.endsWith('/') ? current?.slice(0, -1) : current;
 
     if (url === nonTrailing) {
@@ -195,11 +199,34 @@ export const Navbar = () => {
               </RouterLink>
             ))}
             <NavbarIcons />
-            <ThemeToggle isMobile />
+            <div style={{ display: 'flex', gap: '16px', alignItems: 'center', justifyContent: 'center', marginTop: '16px' }}>
+              <a
+                href={config.resumePath}
+                download
+                className={styles.navIconLink}
+                aria-label="Download Resume"
+              >
+                <Icon icon="download" className={styles.navIcon} />
+              </a>
+              <ThemeToggle isMobile />
+            </div>
           </nav>
         )}
       </Transition>
-      {!isMobile && <ThemeToggle data-navbar-item />}
+      {!isMobile && (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', paddingBottom: '16px' }}>
+          <a
+            href={config.resumePath}
+            download
+            className={styles.navIconLink}
+            aria-label="Download Resume"
+            data-navbar-item
+          >
+            <Icon icon="download" className={styles.navIcon} />
+          </a>
+          <ThemeToggle data-navbar-item />
+        </div>
+      )}
     </header>
   );
 };

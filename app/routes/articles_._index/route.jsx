@@ -1,6 +1,6 @@
 import { baseMeta } from '~/utils/meta';
 import { getPosts } from './posts.server';
-import { json } from '@remix-run/cloudflare';
+import { json } from '@remix-run/node';
 
 export async function loader() {
   const allPosts = await getPosts();
@@ -13,8 +13,7 @@ export async function loader() {
 export function meta() {
   return baseMeta({
     title: 'Articles',
-    description:
-      'A collection of technical design and development articles. May contain incoherent ramblings.',
+    description: 'A small blog section for technical notes, project reflections, and portfolio updates.',
   });
 }
 

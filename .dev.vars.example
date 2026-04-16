@@ -2,10 +2,18 @@
 
 ENVIRONMENT=development
 
-# The email address to send emails to
-EMAIL=you@website.com
+# The email address to receive contact form messages (use your Gmail)
+TO_EMAIL=you@gmail.com
 
-# The email address to send emails from (this needs to be set up in the AWS SES dashboard)
+# Optional alias for TO_EMAIL for backward compatibility
+EMAIL=you@gmail.com
+
+# Preferred provider: Resend
+RESEND_API_KEY=PASTE_YOUR_RESEND_API_KEY
+RESEND_FROM_EMAIL=Portfolio <noreply@yourdomain.com>
+
+# Fallback provider: AWS SES
+# The email address to send emails from (must be verified in AWS SES)
 FROM_EMAIL=portfolio-site@website.com
 
 # Credentials from your AWS account

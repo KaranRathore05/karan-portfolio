@@ -3,27 +3,24 @@ __  __  __
  \ \/\ \
   \/  \/
 
-The humans.txt file explains the team, technology,
-and graphic assets behind this site humanstxt.org.
+The humans.txt file explains the people, technology,
+and assets behind this site.
 
 _______________________________________________________________________________
 
-DESIGNER | デザイナー
+CREATOR
 
-Hamish Williams
-Hand crafted design & web development
+Karanpal Singh
+Full-Stack Developer | ML Enthusiast
+Pilani, Rajasthan, India
 
-Design tools:
-Figma
-Photoshop
-Blender
-
-twitter.com/hamishmw
-github.com/hamishmw
+Email: karan0797s@gmail.com
+GitHub: github.com/KaranRathore05
+LinkedIn: linkedin.com/in/karan-rathore-9a448a302
 
 _______________________________________________________________________________
 
-TECHNOLOGY | テクノロジー
+TECHNOLOGY
 
 React
 Remix
@@ -32,8 +29,8 @@ Framer Motion
 
 _______________________________________________________________________________
 
-FONTS | フォント
+FOCUS
 
-Gotham
-IPA Gothic Regular
-Hiragino Kaku Gothic W8
+Full-stack web development
+Web3 products
+Machine learning projects

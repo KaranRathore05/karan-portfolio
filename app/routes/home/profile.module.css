@@ -7,6 +7,13 @@
   padding-bottom: 40px;
   display: flex;
   justify-content: center;
+  &[data-is-contact='false'] {
+    min-height: auto;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+  }
 
   @media (--mediaTablet) {
     padding-top: 50px;
@@ -36,9 +43,9 @@
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 50%;
-  grid-column-gap: var(--space2XL);
-  max-width: var(--maxWidthL);
+  grid-template-columns: 1fr 40%;
+  grid-column-gap: var(--space3XL);
+  max-width: 1200px;
   width: 100%;
 
   @media (--mediaTablet) {

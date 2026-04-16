@@ -1,11 +1,128 @@
 {
-  "name": "Hamish Williams",
-  "role": "Designer",
-  "disciplines": ["Developer", "Prototyper", "Animator", "Illustrator", "Modder"],
-  "url": "https://hamishw.com",
-  "bluesky": "hamishw.com",
-  "figma": "@Hamish",
-  "github": "HamishMW",
-  "repo": "https://github.com/HamishMW/portfolio",
-  "ascii": "__  __  __\n\u005C \u005C \u005C \u005C \u005C\u2215\n \u005C \u005C\u2215\u005C \u005C\n  \u005C\u2215  \u005C\u2215\n"
+  "name": "Karanpal Singh",
+  "role": "Full-Stack Developer",
+  "fullRole": "B.Tech Computer Engineering Student | Full-Stack Developer | ML Enthusiast",
+  "disciplines": ["Web3 Builder", "ML Engineer", "MERN Engineer"],
+  "url": "https://your-domain.com",
+  "github": "KaranRathore05",
+  "githubUrl": "https://github.com/KaranRathore05",
+  "linkedin": "https://www.linkedin.com/in/karan-rathore-9a448a302/",
+  "email": "karan0797s@gmail.com",
+  "phone": "+91 9649013600",
+  "twitter": "",
+  "repo": "https://github.com/KaranRathore05",
+  "location": "Pilani, Rajasthan, India",
+  "headline": "Building scalable web applications, Web3 products, and practical machine learning solutions.",
+  "intro": "I am a B.Tech Computer Engineering student at B K Birla Institute of Engineering and Technology, Pilani. I focus on full-stack web development, Web3, and machine learning, with an interest in building lightweight, efficient, and user-friendly products.",
+  "about": "I am a Computer Engineering student focused on practical software engineering, scalable systems, and clean user experiences. I enjoy turning ideas into real products using modern web technologies, Web3 workflows, and machine learning.",
+  "aboutExtended": "My recent work includes crowdfunding products, full-stack web applications, and machine learning projects built to be lightweight, useful, and technically strong.",
+  "resumePath": "/Karanpal-Singh-Resume.pdf",
+  "education": [
+    {
+      "institution": "B K Birla Institute of Engineering and Technology, Pilani",
+      "degree": "B.Tech in Computer Engineering",
+      "period": "2022 - 2026",
+      "location": "Pilani, Rajasthan"
+    },
+    {
+      "institution": "Rajasthan Board of Secondary Education (RBSE)",
+      "degree": "Class XII (Senior Secondary) - 90%",
+      "period": "2023",
+      "location": "Rajasthan"
+    },
+    {
+      "institution": "Rajasthan Board of Secondary Education (RBSE)",
+      "degree": "Class X (Secondary) - 87%",
+      "period": "2021",
+      "location": "Rajasthan"
+    }
+  ],
+  "skillGroups": [
+    {
+      "title": "Programming Languages",
+      "items": ["Java", "JavaScript", "Python", "C", "C++"]
+    },
+    {
+      "title": "Frameworks and Technologies",
+      "items": ["MERN Stack", "Next.js", "React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"]
+    },
+    {
+      "title": "Machine Learning and AI",
+      "items": ["Machine Learning Algorithms", "Data Analysis", "AI Foundations", "NumPy", "Matplotlib", "Scikit-learn"]
+    },
+    {
+      "title": "Core Subjects",
+      "items": ["Data Structures and Algorithms", "Operating Systems", "Computer Networks", "OOP", "DBMS"]
+    }
+  ],
+  "projects": [
+    {
+      "slug": "smart-sparrow",
+      "title": "Fundify Campus",
+      "tagline": "Decentralized Student Crowdfunding Platform",
+      "tech": ["MERN", "Algorand", "node-cron"],
+      "description": "A zero-fee decentralized crowdfunding platform built for campus innovators using the MERN stack and Algorand blockchain.",
+      "highlights": [
+        "Winner of ACE Hack 5.0",
+        "Integrated Pera Wallet and algosdk for secure peer-to-peer contributions",
+        "Built automated refund workflow using node-cron for expired campaigns"
+      ],
+      "githubUrl": "https://github.com/KaranRathore05/CrowdFunding-Platforms---Send-Me-A-Cofee.git",
+      "liveUrl": "https://crowd-nine.vercel.app/"
+    },
+    {
+      "slug": "slice",
+      "title": "Send Me a Chai",
+      "tagline": "Creator-Centric Crowdfunding Platform",
+      "tech": ["Next.js", "Tailwind CSS", "Razorpay", "GitHub OAuth"],
+      "description": "A crowdfunding platform that enables smooth supporter interactions and online contributions.",
+      "highlights": [
+        "Integrated GitHub OAuth login",
+        "Added Razorpay payments, real-time notifications, and dashboard",
+        "Implemented secure profiles and personalized supporter messaging"
+      ],
+      "githubUrl": "https://github.com/KaranRathore05/CrowdFunding-Platforms---Send-Me-A-Cofee.git",
+      "liveUrl": "https://crowd-nine.vercel.app/"
+    },
+    {
+      "slug": "volkihar-knight",
+      "title": "CardioPredict",
+      "tagline": "Heart Attack Risk Level Prediction",
+      "tech": ["Python", "Random Forest", "Scikit-learn"],
+      "description": "A machine learning project for predicting heart attack risk levels using clinical health indicators.",
+      "highlights": [
+        "Achieved 98% accuracy",
+        "Performed feature importance analysis",
+        "Improved reliability through hyperparameter tuning"
+      ],
+      "githubUrl": "https://github.com/KaranRathore05/Cardio-Predict.git",
+      "liveUrl": ""
+    }
+  ],
+  "experience": [
+    {
+      "company": "IIT Bombay - Spoken Tutorial Project",
+      "role": "C Programming Trainee",
+      "meta": "Remote | 2024",
+      "description": "Strengthened problem-solving and procedural programming skills through structured assignments and practical exercises."
+    },
+    {
+      "company": "Muskurahat Foundation",
+      "role": "Crowdfunding Intern",
+      "meta": "Mumbai (Remote) | Jan 2025",
+      "description": "Worked on outreach strategies, donor engagement, and campaign promotion to improve participation."
+    }
+  ],
+  "certifications": [
+    "C Training - IIT Bombay (Spoken Tutorial)",
+    "DSA in Java - Apna College",
+    "Java Internship - CodSoft",
+    "HackwithUttarpradesh Certificate"
+  ],
+  "achievements": [
+    "ACE Hack 5.0 Winner - Built Fundify Campus, a decentralized crowdfunding platform",
+    "Solved 200+ DSA Problems across LeetCode, Codeforces, CodeChef, and HackerRank",
+    "Active GitHub Contributor with 300+ contributions and consistent coding practice"
+  ],
+  "ascii": "__  __  __\n\\ \\ \\ \\ \\/\n \\ \\/\\ \\\n  \\/  \\/\n"
 }

@@ -1,6 +1,6 @@
 @layer layout {
   .navbar {
-    --headerNavFontSize: calc((16 / 16) * 1rem);
+    --headerNavFontSize: calc((13 / 16) * 1rem);
 
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
       --headerNavFontSize: calc((22 / 16) * 1rem);
     }
 
-    @media (--mediaMobile), (--mediaMobileLS) {
+    @media (max-width: 820px) {
       bottom: auto;
     }
   }
@@ -43,7 +43,7 @@
     flex: 1 1 auto;
     max-width: var(--space2XL);
 
-    @media (--mediaMobile), (--mediaMobileLS) {
+    @media (max-width: 820px) {
       display: none;
     }
   }
@@ -57,7 +57,7 @@
   }
 
   .navLink {
-    padding: var(--spaceM);
+    padding: 10px 8px;
     color: color-mix(in lab, var(--text) 80%, transparent);
     font-weight: var(--fontWeightMedium);
     font-size: var(--headerNavFontSize);
@@ -107,7 +107,7 @@
     position: relative;
     z-index: var(--zIndex2);
 
-    @media (--mediaMobile), (--mediaMobileLS) {
+    @media (max-width: 820px) {
       flex-direction: row;
       position: absolute;
       bottom: var(--spaceXL);
@@ -127,9 +127,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--spaceS);
-    width: var(--space2XL);
-    height: var(--space2XL);
+    padding: 8px;
+    width: calc(var(--spaceXL) + var(--spaceS));
+    height: calc(var(--spaceXL) + var(--spaceS));
     color: var(--textLight);
     transition: color var(--durationM) var(--bezierFastoutSlowin);
 
@@ -161,7 +161,7 @@
     -webkit-backdrop-filter: var(--backdrop);
     backdrop-filter: var(--backdrop);
 
-    @media (--mediaMobile), (--mediaMobileLS) {
+    @media (max-width: 820px) {
       display: flex;
     }
 

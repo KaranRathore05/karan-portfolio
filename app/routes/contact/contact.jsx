@@ -14,30 +14,82 @@ import { useRef } from 'react';
 import { cssProps, msToNum, numToMs } from '~/utils/style';
 import { baseMeta } from '~/utils/meta';
 import { Form, useActionData, useNavigation } from '@remix-run/react';
-import { json } from '@remix-run/cloudflare';
+import { json } from '@remix-run/node';
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+import config from '~/config.json';
 import styles from './contact.module.css';
 
 export const meta = () => {
   return baseMeta({
     title: 'Contact',
-    description:
-      'Send me a message if you’re interested in discussing a project or if you just want to say hi',
+    description: 'Send a message if you want to discuss a project, job opportunity, or collaboration.',
   });
 };
 
 const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
 const EMAIL_PATTERN = /(.+)@(.+){2,}\.(.+){2,}/;
+const CONTACT_EMAIL = 'karan0797s@gmail.com';
 
-export async function action({ context, request }) {
+async function sendWithResend({ apiKey, fromEmail, toEmail, senderEmail, message }) {
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: fromEmail,
+      to: [toEmail],
+      subject: `Portfolio inquiry from ${senderEmail}`,
+      reply_to: senderEmail,
+      text: `From: ${senderEmail}\n\n${message}`,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error('Resend failed');
+  }
+}
+
+async function sendWithSes({ accessKeyId, secretAccessKey, fromEmail, toEmail, senderEmail, message }) {
   const ses = new SESClient({
     region: 'us-east-1',
     credentials: {
-      accessKeyId: context.cloudflare.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: context.cloudflare.env.AWS_SECRET_ACCESS_KEY,
+      accessKeyId,
+      secretAccessKey,
     },
   });
+
+  await ses.send(
+    new SendEmailCommand({
+      Destination: {
+        ToAddresses: [toEmail],
+      },
+      Message: {
+        Body: {
+          Text: {
+            Data: `From: ${senderEmail}\n\n${message}`,
+          },
+        },
+        Subject: {
+          Data: `Portfolio inquiry from ${senderEmail}`,
+        },
+      },
+      Source: `Portfolio <${fromEmail}>`,
+      ReplyToAddresses: [senderEmail],
+    })
+  );
+}
+
+export async function action({ context, request }) {
+  const env = process.env ?? {};
+  const resendApiKey = env.RESEND_API_KEY;
+  const resendFromEmail = env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+  const accessKeyId = env.AWS_ACCESS_KEY_ID;
+  const secretAccessKey = env.AWS_SECRET_ACCESS_KEY;
+  const sesFromEmail = env.FROM_EMAIL || CONTACT_EMAIL;
+  const toEmail = env.TO_EMAIL || env.EMAIL || CONTACT_EMAIL;
 
   const formData = await request.formData();
   const isBot = String(formData.get('name'));
@@ -69,26 +121,49 @@ export async function action({ context, request }) {
     return json({ errors });
   }
 
-  // Send email via Amazon SES
-  await ses.send(
-    new SendEmailCommand({
-      Destination: {
-        ToAddresses: [context.cloudflare.env.EMAIL],
-      },
-      Message: {
-        Body: {
-          Text: {
-            Data: `From: ${email}\n\n${message}`,
-          },
-        },
-        Subject: {
-          Data: `Portfolio message from ${email}`,
+  const hasResend = Boolean(resendApiKey);
+  const hasSes = Boolean(accessKeyId && secretAccessKey && sesFromEmail);
+
+  if (!hasResend && !hasSes) {
+    return json(
+      {
+        errors: {
+          message: `Contact service is not configured yet. Please email ${CONTACT_EMAIL} directly.`,
         },
       },
-      Source: `Portfolio <${context.cloudflare.env.FROM_EMAIL}>`,
-      ReplyToAddresses: [email],
-    })
-  );
+      { status: 500 }
+    );
+  }
+
+  try {
+    if (hasResend) {
+      await sendWithResend({
+        apiKey: resendApiKey,
+        fromEmail: resendFromEmail,
+        toEmail,
+        senderEmail: email,
+        message,
+      });
+    } else {
+      await sendWithSes({
+        accessKeyId,
+        secretAccessKey,
+        fromEmail: sesFromEmail,
+        toEmail,
+        senderEmail: email,
+        message,
+      });
+    }
+  } catch {
+    return json(
+      {
+        errors: {
+          message: `Unable to send message right now. Please email ${CONTACT_EMAIL} directly.`,
+        },
+      },
+      { status: 500 }
+    );
+  }
 
   return json({ success: true });
 }
@@ -126,6 +201,24 @@ export const Contact = () => {
               data-status={status}
               style={getDelay(tokens.base.durationXS, initDelay, 0.4)}
             />
+            <div
+              className={styles.contactMeta}
+              data-status={status}
+              style={getDelay(tokens.base.durationXS, initDelay, 0.5)}
+            >
+              <Text className={styles.contactMetaText} size="s" as="p">
+                Email:{' '}
+                <a className={styles.contactMetaLink} href={`mailto:${CONTACT_EMAIL}`}>
+                  {CONTACT_EMAIL}
+                </a>
+              </Text>
+              <Text className={styles.contactMetaText} size="s" as="p">
+                Phone:{' '}
+                <a className={styles.contactMetaLink} href={`tel:${config.phone.replace(/\s+/g, '')}`}>
+                  {config.phone}
+                </a>
+              </Text>
+            </div>
             {/* Hidden honeypot field to identify bots */}
             <Input
               className={styles.botkiller}
@@ -215,7 +308,7 @@ export const Contact = () => {
               data-status={status}
               style={getDelay(tokens.base.durationXS)}
             >
-              I’ll get back to you within a couple days, sit tight
+              Thanks for reaching out. I will get back to you soon.
             </Text>
             <Button
               secondary

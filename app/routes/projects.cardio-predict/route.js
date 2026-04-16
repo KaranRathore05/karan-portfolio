@@ -1,0 +1,1 @@
+export { VolkiharKnight as default, meta } from '../projects.volkihar-knight/volkihar-knight';
